@@ -13,3 +13,12 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+
+// alert style
+mat-form-field {
+    margin-right: 12px;
+  }
+
+  .snackbar-success {
+    color: green;
+  }
