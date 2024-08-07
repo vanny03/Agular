@@ -16,35 +16,36 @@ export interface UserData {
 }
 
 const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
+  // 'blueberry',
+  // 'lychee',
+  // 'kiwi',
+  // 'mango',
+  // 'peach',
+  // 'lime',
+  // 'pomegranate',
+  // 'pineapple',
 ];
 const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
+  // 'Maia',
+  // 'Asher',
+  // 'Olivia',
+  // 'Atticus',
+  // 'Amelia',
+  // 'Jack',
+  // 'Charlotte',
+  // 'Theodore',
+  // 'Isla',
+  // 'Oliver',
+  // 'Isabella',
+  // 'Jasper',
+  // 'Cora',
+  // 'Levi',
+  // 'Violet',
+  // 'Arthur',
+  // 'Mia',
+  // 'Thomas',
   'Elizabeth',
+  
 ];
 
 
@@ -59,7 +60,8 @@ const NAMES: string[] = [
 export class DashboardComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'userName', 'password', 'emailID'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource = user_json.users;
+  // dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -69,29 +71,29 @@ export class DashboardComponent implements OnInit {
     private http: HttpClient
   ) {
     // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
+    // const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    // this.dataSource = new MatTableDataSource(users);
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
   }
 
   ngOnInit(): void {
     // this.getUserList();
-    console.log(user_json.users.email);
+    console.log(user_json.users);
     // this.dataSource.data = user_json.users;
     
   }
@@ -103,22 +105,22 @@ export class DashboardComponent implements OnInit {
   //   })
   // }
 
-  createNewUser(id: number): UserData {
-    const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-      ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-      '.';
+  // createNewUser(id: number): UserData {
+  //   const name =
+  //     NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
+  //     ' ' +
+  //     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
+  //     '.';
   
-    return {
-      id: id.toString(),
-      userName: name,
-      password: Math.round(Math.random() * 100).toString(),
-      emailId: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-    };
+  //   return {
+  //     id: id.toString(),
+  //     userName: name,
+  //     password: Math.round(Math.random() * 100).toString(),
+  //     emailId: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
+  //   };
   
    
-  }
+  // }
   
 }
 
