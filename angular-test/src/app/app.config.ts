@@ -10,6 +10,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
 
 
 export const appConfig: ApplicationConfig = {
@@ -23,5 +24,7 @@ export const appConfig: ApplicationConfig = {
     MatSnackBarModule,
     HttpClient,
     MatTableModule, provideAnimationsAsync(),
+    MatCardModule
   ],
 };
+

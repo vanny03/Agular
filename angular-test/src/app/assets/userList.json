@@ -31,5 +31,16 @@
             "emailId": 30
         }
         
+    ],
+
+
+    "products": [
+        {
+            "id": 1,
+            "productName": "Product 1",
+            "description": "Description of Product 1",
+            "price": 100,
+            "quantity": 50
+        }
     ]
 }
