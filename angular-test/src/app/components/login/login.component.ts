@@ -81,7 +81,7 @@ export class LoginComponent {
       console.log(isUserFound);
       
       if (isUserFound != undefined) {
-        this.router.navigateByUrl('dashboard');
+        this.router.navigateByUrl('home');
       } 
 
       // alert wrong login

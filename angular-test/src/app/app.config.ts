@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatTableModule} from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import {MatCardModule} from '@angular/material/card';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,12 +19,14 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(),
-    FormsModule, provideAnimationsAsync(),
-    MatButtonModule, 
+    FormsModule,
+    provideAnimationsAsync(),
+    MatButtonModule,
     MatSnackBarModule,
     HttpClient,
-    MatTableModule, provideAnimationsAsync(),
-    MatCardModule
+    MatTableModule,
+    provideAnimationsAsync(),
+    MatCardModule,
+    MatDialogModule,
   ],
 };
-

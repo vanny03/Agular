@@ -1,27 +1,13 @@
-<p>menu works!</p>
 <div class="banner"></div>
 
-<!-- <div class="container">
-<mat-card class="example-card" appearance="outlined">
-
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="../assets/images/product-show3.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Add To Card</button>
-      <button mat-button>BUY NOW</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="create-product">
+  <h3>Create New Product</h3>
+  <button type="button" class="btn btn-primary" (click)="openModel()" data-bs-toggle="modal" data-bs-target="#myModal" >
+    New Product
+</button>
 </div>
-   -->
+<hr />
+
 <div class="container p-5">
   <div class="card">
     <div
@@ -80,30 +66,62 @@
       data-mdb-ripple-init
       data-mdb-ripple-color="light"
     >
-      <!-- <img
+      <img
         src="https://www.clarinsusa.com/dw/image/v2/AAFS_PRD/on/demandware.static/-/Sites-clarins-master-products/default/dwefc54327/original/80104509_original_original_1.jpg?sw=520&sh=520"
         class="img-fluid"
-      > -->
-      <img [src]="url" alt="Cat Image">
-
-      
-      <!-- <a href="#!">
-        <div
-          class="mask"
-          style="background-color: rgba(251, 251, 251, 0.15)"
-        ></div>
-      </a> -->
-
+      />
     </div>
+
     <div class="card-body">
       <h5 class="card-title">Skin Care</h5>
       <p class="card-text">
         ard title and make up the bulk of the card's content.
       </p>
-      <!-- <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Button</a> -->
       <button class="btn btn-primary" type="submit">Button</button>
     </div>
   </div>
 </div>
 
 
+<!-- ===========pop up create product============ -->
+<!-- Button to Open the Modal -->
+  <!-- The Modal -->
+  <div class="modal" id="myModal" #myModal>
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Input your product</h4>
+          <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="mb-3 mt-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input type="text" [(ngModel)]="productObj.name" class="form-control" id="name" placeholder="" name="name">
+          </div>
+
+          <div class="mb-3">
+            <label for="formFileMultiple" [(ngModel)]="productObj.image"  class="form-label">Product Photo</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
+          </div>
+
+          <!-- <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="text" class="form-control" id="pwd" placeholder="" name="pswd">
+          </div> -->
+
+          <label for="comment">Discretion:</label>
+          <textarea class="form-control" [(ngModel)]="productObj.description"  rows="5" id="comment" name="text"></textarea>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success"(click)="saveProduct()" data-bs-dismiss="modal">Add New</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

@@ -28,3 +28,18 @@ image{
     justify-content: space-around;
 }
 
+.create-product{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px 0 50px;
+}
+
+hr{
+   margin: 0px 50px;
+   border: solid 1px black;
+}
+
+.create-product button{
+    margin: 15px 0;
+    padding: 10px;
+}
