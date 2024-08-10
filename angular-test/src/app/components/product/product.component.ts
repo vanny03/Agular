@@ -38,8 +38,8 @@ export class ProductComponent {
       const oldArray = JSON.parse(isLocalPresent);
       oldArray.push(this.productObj);
       localStorage.setItem("products",JSON.stringify(oldArray));
-
     }
+
     else{
       const newArr = [];
       newArr.push(this.productObj);
