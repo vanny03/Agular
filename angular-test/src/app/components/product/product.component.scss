@@ -6,7 +6,10 @@
 //     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
 //     background-size: cover;
 //   }
-  
+ 
+mat-form-field {
+    margin-right: 12px;
+  }
 
 .card{
     width: 300px;
@@ -42,4 +45,27 @@ hr{
 .create-product button{
     margin: 15px 0;
     padding: 10px;
+}
+
+thead th{
+    background-color: #000;
+    color: white;
+}
+
+tbody .td-btn{
+    display: flex;
+    gap: 10px;
+    border-right: 1px solid #000;
+    justify-content: center;
+}
+
+tr th, td{
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+}
+
+.not-product{
+    color: red;
+    display: flex;
 }

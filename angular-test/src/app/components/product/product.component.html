@@ -1,7 +1,7 @@
 <div class="banner"></div>
 
 <div class="create-product">
-  <h3>Create New Product</h3>
+  <h4>Create New Product</h4>
   <button type="button" class="btn btn-primary" (click)="openModel()" data-bs-toggle="modal" data-bs-target="#myModal" >
     New Product
 </button>
@@ -9,7 +9,11 @@
 <hr />
 
 <div class="container p-5">
-  <div class="card">
+
+  <!-- ========= Loop to display product ============ -->
+  @for (item of productList; track $index ){
+
+  <!-- <div class="card">
     <div
       class="bg-image hover-overlay"
       data-mdb-ripple-init
@@ -27,65 +31,19 @@
       </a>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Skin Care</h5>
+      <h5 class="card-title">{{item.name}}</h5>
       <p class="card-text">
-        ard title and make up the bulk of the card's content.
+        {{item.description}}
       </p>
       <button class="btn btn-primary" type="submit">Button</button>
     </div>
-  </div>
-
-  <div class="card">
-    <div
-      class="bg-image hover-overlay"
-      data-mdb-ripple-init
-      data-mdb-ripple-color="light"
-    >
-      <img
-        src="https://www.clarinsusa.com/dw/image/v2/AAFS_PRD/on/demandware.static/-/Sites-clarins-master-products/default/dwefc54327/original/80104509_original_original_1.jpg?sw=520&sh=520"
-        class="img-fluid"
-      />
-      <a href="#!">
-        <div
-          class="mask"
-          style="background-color: rgba(251, 251, 251, 0.15)"
-        ></div>
-      </a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Skin Care</h5>
-      <p class="card-text">
-        ard title and make up the bulk of the card's content.
-      </p>
-      <button class="btn btn-primary" type="submit">Button</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div
-      class="bg-image hover-overlay"
-      data-mdb-ripple-init
-      data-mdb-ripple-color="light"
-    >
-      <img
-        src="https://www.clarinsusa.com/dw/image/v2/AAFS_PRD/on/demandware.static/-/Sites-clarins-master-products/default/dwefc54327/original/80104509_original_original_1.jpg?sw=520&sh=520"
-        class="img-fluid"
-      />
-    </div>
-
-    <div class="card-body">
-      <h5 class="card-title">Skin Care</h5>
-      <p class="card-text">
-        ard title and make up the bulk of the card's content.
-      </p>
-      <button class="btn btn-primary" type="submit">Button</button>
-    </div>
-  </div>
-  
+  </div> -->
+}
 </div>
 
 
 <!-- ===========pop up create product============ -->
+
 <!-- Button to Open the Modal -->
   <!-- The Modal -->
   <div class="modal" id="myModal" #myModal>
@@ -105,15 +63,15 @@
             <input type="text" [(ngModel)]="productObj.name" class="form-control" id="name" placeholder="" name="name">
           </div>
 
+          <div class="mb-3 mt-3">
+            <label for="price" class="form-label">Product Price</label>
+            <input type="text" [(ngModel)]="productObj.price" class="form-control" id="price" placeholder="" name="price">
+          </div>
+
           <div class="mb-3">
             <label for="formFileMultiple" [(ngModel)]="productObj.image"  class="form-label">Product Photo</label>
             <input class="form-control" type="file" id="formFileMultiple" multiple>
           </div>
-
-          <!-- <div class="mb-3">
-            <label for="pwd" class="form-label">Password:</label>
-            <input type="text" class="form-control" id="pwd" placeholder="" name="pswd">
-          </div> -->
 
           <label for="comment">Discretion:</label>
           <textarea class="form-control" [(ngModel)]="productObj.description"  rows="5" id="comment" name="text"></textarea>
@@ -121,9 +79,52 @@
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success"(click)="saveProduct()" data-bs-dismiss="modal">Add New</button>
+          @if(productObj.id == 0){
+            <button type="button" class="btn btn-primary"(click)="saveProduct()" data-bs-dismiss="modal">Add New</button>
+          }
+          @else {
+            <button type="button" class="btn btn-success"(click)="updateProduct()" data-bs-dismiss="modal">Update</button>
+          }
         </div>
   
       </div>
     </div>
   </div>
+
+
+  <!-- ==== Table display products -->
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Prices</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @if (productList.length !== 0){
+          <tr *ngFor="let item of productList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.name}}</td>
+            <td>${{item.price}}</td>
+            <!-- <td><img [src]="item.image" width="100"></td> -->
+            <td>{{item.description}}</td>
+            <td class="td-btn">
+              <button  class="btn btn-success" (click)="editProduct(item)">Edit</button>
+              <button  class="btn btn-danger" (click)="deleteProduct()">Delete</button>
+            </td>
+          </tr>
+        }     
+        @else {
+          <p class="not-product">No Record Found. Create New Record</p>
+        }
+      </tbody>
+    </table>
+    </div>
+
+
+  
