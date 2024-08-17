@@ -24,6 +24,7 @@ export class ProductComponent {
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  productKey = 'products';
 
   constructor(private _snackBar: MatSnackBar) {}
 
@@ -33,7 +34,7 @@ export class ProductComponent {
   productList: products[] = [];
 
   ngOnInit(): void {
-    const LocalData = localStorage.getItem("products");
+    const LocalData = localStorage.getItem(this.productKey);
     if(LocalData != null) {
       this.productList = JSON.parse(LocalData);
     }
@@ -62,13 +63,13 @@ export class ProductComponent {
       currentProduct.price = this.productObj.price;
       currentProduct.description = this.productObj.description;
     };
-    localStorage.setItem('products', JSON.stringify(this.productList));
+    localStorage.setItem(this.productKey, JSON.stringify(this.productList));
     this.closeModal();
   }
 
   saveProduct(){
     console.log(this.productObj);
-    const isLocalPresent = localStorage.getItem("products")
+    const isLocalPresent = localStorage.getItem(this.productKey)
 
     if(isLocalPresent != null){
       const oldArray = JSON.parse(isLocalPresent);
@@ -79,7 +80,7 @@ export class ProductComponent {
 
       this.productList = oldArray;
 
-      localStorage.setItem("products",JSON.stringify(oldArray));
+      localStorage.setItem(this.productKey,JSON.stringify(oldArray));
     }
 
     else{
@@ -87,7 +88,7 @@ export class ProductComponent {
       newArr.push(this.productObj);
       this.productObj.id = 1;
       this.productList = newArr;
-      localStorage.setItem("products",JSON.stringify(newArr));
+      localStorage.setItem(this.productKey,JSON.stringify(newArr));
     }
 
     // Close dialog after create
@@ -106,7 +107,7 @@ export class ProductComponent {
   deleteProduct(){
     const index = this.productList.findIndex((m: any) => m.name == this.productObj.name);
     this.productList.splice(index, 1);
-    localStorage.setItem("products",JSON.stringify(this.productList));
+    localStorage.setItem(this.productKey,JSON.stringify(this.productList));
     this.closeModal();
 
     this._snackBar.open('Delete success', 'Thanks', {

@@ -47,18 +47,21 @@ export class LoginComponent {
 
   // Register conditions
   onRegister() {
-    debugger;
+    // debugger;
     const isLocalData = localStorage.getItem("user");
     if (isLocalData != null) {
       const localArray = JSON.parse(isLocalData);
       localArray.push(this.userRegisterObj);
       localStorage.setItem("user", JSON.stringify(localArray));
-    } else {
+
+      this.router.navigateByUrl('home');
+    } 
+    else {
       const localArray = [];
       localArray.push(this.userRegisterObj);
       localStorage.setItem("user", JSON.stringify(localArray));
     }
-    alert("Registration on Success");
+    // alert("Registration on Success");
     this._snackBar.open('Login success', 'Thanks', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
@@ -82,8 +85,8 @@ export class LoginComponent {
       
       if (isUserFound != undefined) {
         this.router.navigateByUrl('home');
-      } 
-
+      }
+      
       // alert wrong login
       else {
         this._snackBar.open('Your username or password is wrong', 'OK!!', {

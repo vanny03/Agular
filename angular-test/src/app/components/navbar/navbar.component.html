@@ -29,7 +29,7 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="dashboard">Home</a>
+            <a class="nav-link" href="home">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="products">Products</a>
@@ -45,7 +45,7 @@
       <!-- Right elements -->
       <div class="d-flex align-items-center">
         <!-- Icon -->
-        <a class="link-secondary me-3" href="#">
+        <a class="link-secondary me-3">
           <i class="fas fa-shopping-cart"></i>
         </a>
          
@@ -53,7 +53,7 @@
           <a
             data-mdb-dropdown-init
             class="dropdown-toggle d-flex align-items-center hidden-arrow"
-            href=""
+            type="button"
             id="navbarDropdownMenuAvatar"
             role="button"
             aria-expanded="false"
@@ -67,25 +67,30 @@
             />
           </a>
           <ul
-            class="dropdown-menu dropdown-menu-end"
+            class="dropdown-menu dropdown-menu-end" 
             aria-labelledby="navbarDropdownMenuAvatar"
           >
             <li>
-              <a class="dropdown-item" href="">My profile</a>
+              <a class="dropdown-item" href="#" >My profile</a>
             </li>
             <li>
-              <a class="dropdown-item" href="">Settings</a>
+              <a class="dropdown-item" href="#" >Settings</a>
             </li>
             <li>
-              <a class="dropdown-item" href="">Logout</a>
+              <a class="dropdown-item" href="#">Logout</a>
             </li>
           </ul>
         </div>
+
+        <li [hidden]="!isLoggedIn">
+          <a class=" btn btn-primary" href="#" (click)="onLogout()">Logout</a>
+        </li>
       </div>
+
+
       <!-- Right elements -->
     </div>
     <!-- Container wrapper -->
   </nav>
   <!-- Navbar -->
     <router-outlet></router-outlet>
-  
